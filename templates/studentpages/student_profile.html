@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!--[if IE 8]>          <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>          <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
+<head>
+    {% load staticfiles %}
+    {% csrf_token %}
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Student {{ f.student_name.title }}</title>
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script>
+function myFunction() {
+    alert("Your message has been sent!");
+}
+</script>
+    <link rel="apple-touch-icon" sizes="72x72" href="../static/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../static/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../static/images/apple-touch-icon-144x144.png">
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Neuton:400,200,300' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <!-- Theme Styles CSS-->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/stylestudent.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/nivo-lightbox.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/default.css' %}" />
+       <link rel="stylesheet" href="{% static 'guide/css/style.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <!--[if lt IE 9]>
+    <script src="/js/libs/html5.js"></script>
+    <![endif]-->
+    <!-- Style Switch -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/yellow-black.css' %}" media="screen" />
+</head>
+<script>
+function show_school_text_boxes()
+{
+    document.getElementById('forl').style.display='block';
+    document.getElementById('hid').style.display='block';
+
+}
+
+function hide_school_text_boxes()
+{
+	document.getElementById('forl').style.display='none';
+    document.getElementById('hid').style.display='none';
+}
+
+function show_collage1_text_boxes()
+{
+    document.getElementById('colalge1form').style.display='block';
+    document.getElementById('hid2').style.display='block';
+
+}
+
+function hide_collage1_text_boxes()
+{
+	document.getElementById('colalge1form').style.display='none';
+    document.getElementById('hid2').style.display='none';
+}
+function show_collage2_text_boxes()
+{
+    document.getElementById('colalge2form').style.display='block';
+    document.getElementById('hid3').style.display='block';
+
+}
+
+function hide_collage2_text_boxes()
+{
+	document.getElementById('colalge2form').style.display='none';
+    document.getElementById('hid3').style.display='none';
+}
+</script>
+
+<body>
+    <!-- LOADING MASK -->
+    <div id="mask">
+        <div class="loader">
+            <img src="{% static "images/loading.gif" %}"    alt='loading'>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container no-padding">
+            <div class="row">
+                <div class="col-md-3 l-content">
+                    <div class="profile-pic">
+                        <div  ><img  src=  "{{f.docfile.url}} " class="img-responsive" alt=""/></div>
+                    </div>
+                    <nav>
+                    <ul class="navigation">
+                        <li><a href="#">Profile<i class="fa fa-user" ></i></a></li>
+                        <li><a href="#">Resume <i class="fa fa-file-text"></i></a></li>
+                        <li><a href="#">Route Map <i class="fa fa-file-text"></i></a></li>
+                        <li><a href="#">Scholarship <i class="fa fa-file-text"></i><span class="badge" >{{ k2 }}</span></a></li>
+                        <li><a href="#">Notification <i class="fa fa-comment"></i><span class="badge" background-color="#F1C40F">{{ k1 }}</span></a></li>
+                        <li><a href="#">Messages<i class="fa fa-envelope"></i></a></li>
+                        <li><a href="#">Search Guide<i class="fa fa-search"></i></a></li>
+                        <li><a href="#">Search Sponsors<i class="fa fa-search"></i></a></li>
+                        <li><a href="#">Logout<i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-9 r-content">
+                    <div class="flexslider">
+                        <div class="slides">
+                            <!-- SECTION 1 - HOMEPAGE -->
+                            <section class="no-display">
+                                <div class="profile" id="1">
+                                    <h2><span>Welcome {{ f.student_name.title }}</span></h2>
+                                    <div class="sep1"></div>
+                                    <h2>your goal </h2>
+                                    <div class="sep2"></div>
+                                    <h1><span>{{ f.goal }}</span></h1>
+                                    <div class="personal-info col-md-12 no-padding">
+                                        <h4>Personal Info</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                <div class="p-info"><em>Name</em><span>{{ f.student_name.title }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>Current Education</em><span>{{ f.current_education }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>Date of birth</em><span>{{ f.date_of_birth }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>E-mail</em><span>{{ f.email }}</span></div>
+                                            </li>
+                                             <li>
+                                                <div class="p-info"><em>Mobile</em><span>{{ f.phone1}}</span></div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </section>
+                            <!-- SECTION 1 - HOMEPAGE -->
+
+                            <!-- SECTION 3 - CV / RESUME -->
+                            <section class="no-display">
+                                <div class="item resume" id="2">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Resume</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resume-info">
+                                        <h4>Education</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                <h5>School: {{ f.school }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i>Duration: {{ f.school_duration }}</span>
+                                                <p>Board: {{ f.school_board }}</p>
+                                                <p>Achievements: {{ f.school_achievements }}.</p>
+                                            <div class="contact-form2">
+
+                                                <input type="button" onclick="javascript:show_school_text_boxes();" value="Edit School details" />
+                                            </div>
+                                                <form action="/EditStudentSchool/{{ f.id }}/" method="post" id="forl" style="display:none;">
+                                                {% csrf_token %}
+                                                    <div class="contact-form">
+                                                Collage/School: <input type="text" name="SchoolName" placeholder="Eg: JNTUH"><br>
+                                                Duration: <input type="text" name="Duration" placeholder="Eg: 2010-2014"><br>
+                                                course type:
+                                                <label>Board / University:</label>
+                                                    <select id = "myList" name="edulist">
+                                                    <option value = "ssc">High school(SSC)</option>
+                                                    <option value = "cbsc">High school(CBSC)</option>
+                                                    <option value = "icse">High school(icse)</option>
+                                                    </select>
+                                                Achievements:
+                                                        <textarea placeholder="enter your achievements" name="SchoolAchievements"></textarea></div>
+                                                    <div class="contact-form2"> <input type="submit" value="Submit"></div>
+                                            </form>
+                                           <div class="contact-form2"> <input type="button"  value="cancel editing" onclick="javascript:hide_school_text_boxes();" id="hid"style="display:none;"/>
+                                           </div>
+                                            </li>
+                                            <li>
+                                                <li>
+                                                <h5>Collage: {{ f.collage1 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i>Duration: {{ f.collage_duration1 }}</span>
+                                                <p>Course: {{ f.collage_course1 }}</p>
+                                                <p>Achievements: {{ f.collage_achievements1 }}.</p>
+                                                <div class="contact-form2">
+                                                <input type="button" onclick="javascript:show_collage1_text_boxes();" value="Edit Collage details" />
+                                                </div>
+                                                    <form action="/EditStudentCollage1/{{ f.id }}/" method="post" id="colalge1form" style="display:none;">
+                                                {% csrf_token %}
+                                                        <div class="contact-form">
+                                                Collage/School: <input type="text" name="Collage1Name" placeholder="Eg: Narayana"><br>
+                                                Duration: <input type="text" name="Duration" placeholder="Eg: 2010-2014"><br>
+                                                course type:
+                                                <label>Board / University:</label>
+                                                    <select id = "myList" name="edulist">
+                                                    <option value = "mpc">Intermediate(MPC)</option>
+                                                    <option value = "bipc">Intermediate(BIPC)</option>
+                                                    <option value = "mec">Intermediate(MEC)</option>
+                                                        <option value = "polytechnic_computers">Polytechnic(Computers)</option>
+                                                        <option value = "polytechnic_mechanical">Polytechnic(Mechanical)</option>
+                                                        <option value = "polytechnic_electronics">Polytechnic(Electronics)</option>
+                                                        <option value = "polytechnic_civil">Polytechnic(Civil)</option>
+                                                 </select>
+                                                Achievements:
+                                                            <textarea placeholder="enter your achievements" name="CollageAchievements"></textarea></div>
+                                                        <div class="contact-form2"> <input type="submit" value="Submit"></div>
+                                            </form>
+                                            <div class="contact-form2"><input type="button"  value="cancel editing" onclick="javascript:hide_collage1_text_boxes();" id="hid2"style="display:none;"/>
+                                            </div></li>
+
+
+
+
+                                            <li>
+                                                <h5>Collage: {{ f.collage2 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i>Duration: {{ f.collage_duration2 }}</span>
+                                                <p>Board: {{ f.collage_course2 }}</p>
+                                                <p>Achievements: {{ f.collage_achievements2 }}.</p>
+<div class="contact-form2">
+                                                <input type="button" onclick="javascript:show_collage2_text_boxes();" value="Edit Collage details" />
+</div>
+                                                    <form action="/EditStudentCollage2/{{ f.id }}/" method="post" id="colalge2form" style="display:none;">
+                                                {% csrf_token %}
+                                                    <div class="contact-form">
+                                                Collage/School: <input type="text" name="Collage2Name" placeholder="Eg: JNTUH"><br>
+                                                Duration: <input type="text" name="Duration" placeholder="Eg: 2010-2014"><br>
+                                                course type:
+                                                <label>Board / University:</label>
+                                                    <select id = "myList" name="edulist">
+                                                    <option value = "cse">Engineering(CSE)</option>
+                                                    <option value = "ece">Engineering(ESE)</option>
+                                                    <option value = "mech">Engineering(MECH)</option>
+                                                        <option value = "bcom">Degree(B.Com)</option>
+                                                        <option value = "bsc">Degree(B.Sc)</option>
+                                                        </select>
+                                                    Achievements:
+                                                        <textarea placeholder="enter your achievements" name="CollageAchievements"></textarea></div>
+                                                        <div class="contact-form2"><input type="submit" value="Submit"></div>
+                                            </form>
+                                            <div class="contact-form2"><input type="button"  value="cancel editing" onclick="javascript:hide_collage2_text_boxes();" id="hid3"style="display:none;"/>
+                                            </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- SECTION 3 - CV / RESUME -->
+                            <!--route map-->
+                            <section class="no-display">
+                                <div class="item RouteMap" id="3">
+                                      <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Route Map</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resume-info">
+                                        <h4> <img src="../static/images/{{ f.goal }}.PNG"  width="700" height="500" alt="routemap"/></h4>
+                                    </div>
+                                </div>
+                            </section>
+                        <!-- SECTION 5 - Route Map/ NEWS -->
+
+
+
+                            <!-- SECTION 5 - Scholarships / NEWS -->
+                            <section class="no-display">
+                                <div class="item Scholarships" id="4">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Scholarships</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Scholarships-info">
+
+                                        <h4>Scholarships available</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                {% for venky2 in data2 %}
+                                                {% if venky2.goaltype == f.goal%}
+
+                                                <li>
+                                                    <h3>{{venky2.scholorship_details}}</h3>&nbsp;&nbsp<h5>{{venky2.created_on}}</h5>
+                                            <p><a a href="{{venky2.apply_scholorship}}">{{venky2.apply_scholorship}}</a></p>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- SECTION 4 - BLOG / NEWS -->
+
+                            <!-- SECTION 5 - CONTACT -->
+                            <section class="no-display">
+                                <div class="item notification" id="5">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Notifications</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="notification-info">
+
+                                        <h4>Latest Notifications</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                {% for venky in data1 %}
+                                                {% if venky.goaltype == f.goal%}
+
+                                                <li>
+                                                    <h3>{{venky.notification}}</h3>&nbsp;&nbsp<h5>{{venky.created_on}}</h5>
+                                                    <p>{{venky.notify}}</p>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--messages-->
+                             <section class="no-display">
+                                <div class="item messages" id="6">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Messages</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="messages-info">
+
+                                        <h4>New Messages </h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            {% if smessages.sender_message_1 %}
+                                            <li>
+                                                <h5>{{ smessages.sender_mail_1}}</h5>
+                                                <p>{{ smessages.sender_message_1 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToGuideFromStudent/{{ f.id }}/{{ smessages.sender_mail_1 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                            {% if smessages.sender_message_2 %}
+                                            <li>
+                                                <h5>{{ smessages.sender_mail_2}}</h5>
+                                                <p>{{ smessages.sender_message_2 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToGuideFromStudent/{{ f.id }}/{{ smessages.sender_mail_2 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                             {% if smessages.sender_message_3 %}
+                                            <li>
+                                                <h5>{{ smessages.sender_mail_3}}</h5>
+                                                <p>{{ smessages.sender_message_3 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToGuideFromStudent/{{ f.id }}/{{ smessages.sender_mail_3 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        {% if smessages.sender_message_4 %}
+                                            <li>
+                                                <h5>{{ smessages.sender_mail_4}}</h5>
+                                                <p>{{ smessages.sender_message_4 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToGuideFromStudent/{{ f.id }}/{{ smessages.sender_mail_1 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        {% if smessages.sender_message_5 %}
+                                            <li>
+                                                <h5>{{ smessages.sender_mail_5}}</h5>
+                                                <p>{{ smessages.sender_message_5 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToGuideFromStudent/{{ f.id }}/{{ smessages.sender_mail_1 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                               <!--search guide-->
+                              <section class="no-display">
+                                <div class="item SearchGuide" id="7">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Search Guides</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="SearchGuide-info">
+
+                                        <h4>Guides List</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            {% for q in g %}
+                                            <li>
+                                                <h5><a href="/guideview/{{ q.id }}/{{f.id }}"> {{ q.guide_name }}</a></h5>
+                                                <p>{{ q.aboutguide }}.</p>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- search sponsor-->
+
+                            <section class="no-display">
+                                <div class="item SearchSpons" id="8">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Search Sponsors</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="SearchSpons-info">
+
+                                        <h4>Sponsors List</h4>
+                                        <div class="sep2"></div>
+                                        <ul> {% for q in s %}
+                                            <li>
+                                                <h5><a href="/sponsoreview/{{ q.id }}/{{f.id }}"> {{ q.sponsor_name }}</a></h5>
+                                                <p>{{ q.aboutsponsor }}.</p>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--logout-->
+                            <section class="no-display">
+                                <div class="item logout" id="9">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Thanks for stepping in</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="logout-info">
+                                        <h4>press  button to logout</h4>
+                                    </div>
+                                    <div class="contact-form">
+                                        <form id="contactForm" action="/logout/ " method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <button type="submit">LOGOUT</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- SECTION 5 - CONTACT -->
+                        </div>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <footer>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <!-- I CREATED THIS TEMPLATE FOR YOU FOR FREE! PLEASE KEEP THIS LINE, THANK YOU! ENJOY THIS AMAZZZING TEMPLATE! -->
+
+                            </div>
+                            <div class="col-md-5">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT -->
+
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.js' %}"></script>
+    <script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'js/nivo-lightbox.min.js' %}"></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/jquery.inview.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/animations.js' %}"></script>
+
+</body>
+</html>

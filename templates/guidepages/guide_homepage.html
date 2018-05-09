@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ f.guide_name.title }}Guide </title>
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons -->
+
+    <link rel="apple-touch-icon" href="../static/guide/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../static/guide/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../static/guide/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../static/guide/images/apple-touch-icon-144x144.png">
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Neuton:400,200,300' rel='stylesheet' type='text/css'>
+
+    <script src="{% static 'js/respond.min.js' %}"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'guide/css/bootstrap.css' %}"  rel="stylesheet">
+    <!-- Theme Styles CSS-->
+    <link rel="stylesheet" href="{% static 'guide/css/font-awesome.css'%}" />
+    <link rel="stylesheet" href="{% static 'guide/css/style.css'%}"/>
+    <link rel="stylesheet" href="{% static 'guide/css/flexslider.css'%}"/>
+    <link rel="stylesheet" href="{% static 'guide/css/nivo-lightbox.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/stylestudent.css' %}"/>
+    <link rel="stylesheet" href="{% static 'guide/css/default.css'%}" />
+    <link rel="stylesheet" href="{% static 'guide/css/animate.css'%}" />
+
+    <!-- Style Switch -->
+    <link rel="stylesheet" type="text/css" href="{% static '../../static/guide/css/yellow-black.css' %}" media="screen" />
+</head>
+<script>
+function show_about_text_boxes()
+{
+    document.getElementById('forl').style.display='block';
+    document.getElementById('hid').style.display='block';
+
+}
+
+function hide_about_text_boxes()
+{
+   document.getElementById('forl').style.display='none';
+    document.getElementById('hid').style.display='none';
+}
+
+function show_company1_text_boxes()
+{
+    document.getElementById('company1form').style.display='block';
+    document.getElementById('hid2').style.display='block';
+
+}
+
+function hide_company1_text_boxes()
+{
+   document.getElementById('company1form').style.display='none';
+    document.getElementById('hid2').style.display='none';
+}
+function show_company2_text_boxes()
+{
+    document.getElementById('company2form').style.display='block';
+    document.getElementById('hid3').style.display='block';
+
+}
+
+function hide_company2_text_boxes()
+{
+   document.getElementById('company2form').style.display='none';
+    document.getElementById('hid3').style.display='none';
+}
+function show_company3_text_boxes()
+{
+    document.getElementById('company3form').style.display='block';
+    document.getElementById('hid4').style.display='block';
+
+}
+
+function hide_company3_text_boxes()
+{
+   document.getElementById('company3form').style.display='none';
+    document.getElementById('hid4').style.display='none';
+}
+</script>
+<style>
+    .test{
+    height:100;
+    width:100;
+    background-color: #ffd42d;
+     border-radius: 25px;
+    cursor: pointer;
+
+}
+</style>
+    <script>
+function myFunction() {
+    alert("Your message has been sent!");
+}
+</script>
+<body>
+    <!-- LOADING MASK -->
+    <div id="mask">
+        <div class="loader">
+            <img src="{% static "images/loading.gif" %}"  alt='loading'>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container no-padding">
+            <div class="row">
+                <div class="col-md-3 l-content">
+                    <div class="profile-pic">
+                        <div ><img src="{{f.docfile.url}} " class="img-responsive" alt=""/></div>
+                    </div>
+                    <nav>
+                    <ul class="navigation">
+                        <li><a href="#">Profile <i class="fa fa-user"></i></a></li>
+                        <li><a href="#">Occupation <i class="fa fa-file-text fa fa-briefcase"></i></a></li>
+                        <li><a href="#">Search Students <i class="fa fa-search"></i></a></li>
+                        <li><a href="#">Message <i class="fa fa-envelope"></i></a></li>
+                        <li><a href="#">Logout <i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9 r-content">
+                    <div class="flexslider">
+                        <div class="slides">
+                            <!-- SECTION 1 - HOMEPAGE -->
+                            <section class="no-display">
+                                <div class="profile" id="1">
+                                    <h2><span>{{ f.guide_name.title }}</span></h2>
+                                    <div class="sep1"></div>
+                                    <p><b>About me</b></p>
+                                    <p>{{ f.aboutguide }}</p>
+                                    <div class="contact-form2">
+                                    <input type="button" onclick="javascript:show_about_text_boxes();" value="Edit details" /></div>
+                                                <form action="/user/EditGuideAbout/{{ f.id }}/" method="post" id="forl" style="display:none;">
+                                                     <div class="contact-form">
+                                                {% csrf_token %}
+                                                Enter details about you:
+                                                         <textarea placeholder="" name="AboutMe"></textarea></div>
+                                                    <div class="contact-form2"> <input type="submit" value="Submit"></div>
+                                            </form>
+                                     <div class="contact-form2">
+                                            <input type="button"value="cancel editing" onclick="javascript:hide_about_text_boxes();" id="hid"style="display:none;"/>
+                                     </div>
+                                    <div class="personal-info col-md-12 no-padding">
+                                        <h4>Personal Info</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                <div class="p-info"><em>name</em><span>{{ f.guide_name.title }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>date of birth</em><span>September 06, 1976</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>e-mail</em><span>{{ f.email}}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>address</em><span>{{ f.address }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>phone</em><span>012-3456-7890</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>website</em><span>www.google.com</span></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </section>
+                            <!-- SECTION 1 - HOMEPAGE -->
+
+                            <!-- SECTION 3 - CV / RESUME -->
+                            <section class="no-display">
+                                <div class="item resume" id="2">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Occupation</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resume-info">
+                                        <h4>Work Experience</h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                <h5>Company:{{ f.company1 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i> {{ f.companyduration1 }}</span>
+                                                <p>Position :{{ f.positionInCompany1 }}</p>
+                                                 <div class="contact-form2">
+                                                 <input type="button" onclick="javascript:show_company1_text_boxes();" value="Edit details" />
+                                                 </div>
+
+                                                <form action="/user/EditGuideCompany1/{{ f.id }}/" method="post" id="company1form" style="display:none;">
+                                                 <div class="contact-form">
+                                                    {% csrf_token %}
+                                                Company:  <input   type="text" name="CompanyName" placeholder="Eg: Amazon"/><br>
+                                                Duration: <input  type="text" name="Duration" placeholder="Eg: 2010-2014"/><br>
+                                                Position: <input   type="text" name="PositionInCompany" placeholder="Software Engineer"/>
+                                                    </div>
+                                                    <div class="contact-form2">
+                                                <input class="contact-form2" type="submit" value="Submit">
+                                                    </div>
+                                            </form>
+                                            <div class="contact-form2">
+                                            <input type="button"  value="cancel editing" onclick="javascript:hide_company1_text_boxes();" id="hid2"style="display:none;"/>
+                                            </div>
+
+                                            </li>
+                                            <li>
+                                                <h5>Previous Company: {{ f.company2 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i> {{ f.companyduration2 }}</span>
+                                                <p>Position :{{ f.positionInCompany2 }}</p>
+                                                <div class="contact-form2">
+                                                    <input type="button" onclick="javascript:show_company2_text_boxes();" value="Edit details" /></div>
+                                                <div class="contact-form">
+                                                <form action="/user/EditGuideCompany2/{{ f.id }}/" method="post" id="company2form" style="display:none;">
+                                                {% csrf_token %}<div class="contact-form">
+                                                Company:  <input type="text" name="CompanyName" placeholder="Eg: Amazon"/><br>
+                                                Duration: <input type="text" name="Duration" placeholder="Eg: 2010-2014"/><br>
+                                                    Position: <input type="text" name="PositionInCompany" placeholder="Software Engineer"/></div>
+                                                    <div class="contact-form2">  <input  type="submit" value="Submit"></div>
+                                            </form>
+                                                     </div>
+                                            <div class="contact-form2"><input type="button" class="contact-form2" value="cancel editing" onclick="javascript:hide_company2_text_boxes();" id="hid3"style="display:none;"/>
+                                            </div>
+                                            </li>
+                                            <li>
+                                                <h5>Previous Company:{{ f.company3 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i> {{ f.companyduration3 }}</span>
+                                                <p>Position :{{ f.positionInCompany3 }}</p>
+                                                <div class="contact-form2">
+                                                    <input type="button" onclick="javascript:show_company3_text_boxes();" value="Edit details" /></div>
+                                                <form action="/user/EditGuideCompany3/{{ f.id }}/" method="post" id="company3form" style="display:none;">
+                                                {% csrf_token %}<div class="contact-form">
+                                                Company:  <input type="text" name="CompanyName" placeholder="Eg: Amazon"/><br>
+                                                Duration: <input type="text" name="Duration" placeholder="Eg: 2010-2014"/><br>
+                                                    Position: <input type="text" name="PositionInCompany" placeholder="Software Engineer"/></div>
+                                                    <div class="contact-form2"><input type="submit" value="Submit"></div>
+                                            </form><div class="contact-form2">
+                                            <input type="button"  value="cancel editing" onclick="javascript:hide_company3_text_boxes();" id="hid4"style="display:none;"/>
+                                            </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- SECTION 3 - CV / RESUME -->
+                                <!--search Students-->
+                              <section class="no-display">
+                                <div class="item SearchGuide" id="3">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Search Students</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="SearchGuide-info">
+
+                                        <h4>Students List</h4>
+                                        <div class="sep2"></div>
+                                        <ul> {% for q in students %}
+                                            <li>
+                                                <h5><a href="/studentprofileview/{{ q.id }}/{{ f.id }}"> {{ q.student_name }}</a></h5>
+                                                <p>Goal: {{ q.goal }}.</p>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!--messages-->
+                             <section class="no-display">
+                                <div class="item messages" id="4">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Messages</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="messages-info">
+
+                                        <h4>New Messages </h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            {% if gmessages.sender_message_1 %}
+                                            <li>
+                                                <h5>{{ gmessages.sender_mail_1}}</h5>
+                                                <p>{{ gmessages.sender_message_1 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToStudentFromGuide/{{ f.id }}/{{ gmessages.sender_mail_1 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                         {% if gmessages.sender_message_2 %}
+                                            <li>
+                                                <h5>{{ gmessages.sender_mail_2}}</h5>
+                                                <p>{{ gmessages.sender_message_2 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToStudentFromGuide/{{ f.id }}/{{ gmessages.sender_mail_2 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit"onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        {% if gmessages.sender_message_3 %}
+                                            <li>
+                                                <h5>{{ gmessages.sender_mail_3}}</h5>
+                                                <p>{{ gmessages.sender_message_3 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToStudentFromGuide/{{ f.id }}/{{ gmessages.sender_mail_3 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        {% if gmessages.sender_message_4 %}
+                                            <li>
+                                                <h5><a href="" >{{ gmessages.sender_mail_4}}</a></h5>
+                                                <p>{{ gmessages.sender_message_4 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToStudentFromGuide/{{ f.id }}/{{ gmessages.sender_mail_4 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+                                        {% if gmessages.sender_message_5 %}
+                                            <li>
+                                                <h5><a href="" >{{ gmessages.sender_mail_5}}</a></h5>
+                                                <p>{{ gmessages.sender_message_5 }}.</p></li>
+                                            <li>
+                                            <div class="messages-form button">
+                                                <form id="contactForm" action="/messageSendToStudentFromGuide/{{ f.id }}/{{ gmessages.sender_mail_5 }}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <textarea name="message" id="message" rows="5" cols="60" placeholder="Message"></textarea>
+                                                        <button type="submit" onclick="myFunction()">Reply</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            </li>
+                                            {% endif %}
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- SECTION 5 - CONTACT -->
+
+
+                            <!--logout-->
+                            <section class="no-display">
+                                <div class="item logout" id="5">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Thanks for stepping in</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="logout-info">
+                                        <h4>press  button to logout</h4>
+                                    </div>
+                                    <div class="contact-form">
+                                        <form id="contactForm" action="/logout/" method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <button type="submit">LOGOUT</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- SECTION 5 - CONTACT -->
+                        </div>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <footer>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <ul class="social">
+                                    <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="https://in.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT -->
+
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static 'guide/js/bootstrap.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.easing.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'guide/js/nivo-lightbox.min.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.appear.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.inview.js' %}"></script>
+    <script src="{% static 'guide/js/main.js' %}"></script>
+    <script src="{% static 'guide/js/contact.js' %}"></script>
+    <script src="{% static 'guide/js/animations.js' %}"></script>
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="{% static 'guide/js/gmaps.js' %}"></script>
+</body>
+</html>

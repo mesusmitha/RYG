@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sponsors</title>
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons -->
+
+    <link rel="apple-touch-icon" href="../static/guide/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../static/guide/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../static/guide/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../static/guide/images/apple-touch-icon-144x144.png">
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Neuton:400,200,300' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static '../../static/guide/css/bootstrap.css' %}"  rel="stylesheet">
+    <!-- Theme Styles CSS-->
+    <link rel="stylesheet" href="{% static '../../static/guide/css/font-awesome.css'%}" />
+    <link rel="stylesheet" href="{% static '../../static/guide/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '../../static/guide/css/flexslider.css'%}"/>
+    <link rel="stylesheet" href="{% static '../../static/guide/css/nivo-lightbox.css'%}" />
+    <link rel="stylesheet" href="{% static '../../static/css/stylestudent.css' %}"/>
+    <link rel="stylesheet" href="{% static '../../static/guide/css/default.css'%}" />
+    <link rel="stylesheet" href="{% static '../../static/guide/css/animate.css'%}" />
+    <!--[if lt IE 9]>
+    <script src="/js/libs/html5.js"></script>
+    <![endif]-->
+    <!-- Style Switch -->
+    <link rel="stylesheet" type="text/css" href="{% static 'guide/css/yellow-black.css' %}" media="screen" />
+</head>
+<body>
+    <!-- LOADING MASK -->
+    <div id="mask">
+        <div class="loader">
+            <img src="{% static "images/loading.gif" %}" alt='loading'>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container no-padding">
+            <div class="row">
+                <div class="col-md-3 l-content">
+                    <div class="profile-pic">
+                        <div ><img src="{{v.docfile.url}} " class="img-responsive" alt=""/></div>
+                    </div>
+                    <nav>
+                    <ul class="navigation">
+                        <li><a href="#">Profile <i class="fa fa-user"></i></a></li>
+                        <li><a href="#"> Resume <i class="fa fa-briefcase"></i></a></li>
+                        <li><a href="#">Message to Student <i class="fa fa-envelope"></i></a></li>
+                        <li><a href="#"> Go back to my profile<i class="fa fa-arrow-left"></i></a></li>
+                    </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9 r-content">
+                    <div class="flexslider">
+                        <div class="slides">
+                            <!-- SECTION 1 - HOMEPAGE -->
+                            <section class="no-display">
+                                <div class="profile" id="1">
+                                    <h2>Hello, I am <span>{{ v.student_name.title }}</span><br>Student</h2>
+                                    <div class="sep1"></div>
+                                     <h2> Goal </h2>
+                                    <div class="sep2"></div>
+                                    <h1><span>{{ v.goal }}</span></h1>
+                                    <div class="personal-info col-md-12 no-padding">
+                                        <h4>Personal Info</h4>
+
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                                <div class="p-info"><em>Name</em><span>{{ v.student_name.title }}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>e-mail</em><span>{{ v.email}}</span></div>
+                                            </li>
+                                            <li>
+                                                <div class="p-info"><em>address</em><span>{{ v.location }}</span></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </section>
+                            <!-- SECTION 1 - HOMEPAGE -->
+
+                            <!-- SECTION 3 - CV / RESUME -->
+                            <section class="no-display">
+                                <div class="item resume" id="2">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Resume</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="resume-info">
+                                        <h4></h4>
+                                        <div class="sep2"></div>
+                                        <ul>
+                                            <li>
+                                               <h5>School: {{ v.school }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i>Duration: {{ v.school_duration }}</span>
+                                                <p>Board: {{ v.school_board }}</p>
+                                                <p>Achievements: {{ v.school_achievements }}.</p>
+                                            </li>
+                                            <li>
+                                                <h5>Collage: {{ v.collage1 }}</h5>
+                                                <span class="year"><i class="fa fa-calendar"></i>Duration: {{ v.collage_duration1 }}</span>
+                                                <p>Course: {{ v.collage_course1 }}</p>
+                                                <p>Achievements: {{ v.collage_achievements1 }}.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                             <section class="no-display">
+                                <div class="item messages" id="3">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Mesasge</h3>
+                                            </div>
+
+                             <div class="contact-form">
+                                        <h4>Send sponsor a message</h4>
+                                        <form id="contactForm" action="/" method="post">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" name="senderName" id="senderName" placeholder="name">
+                                                    <input type="email" name="senderEmail" id="senderEmail" placeholder="e-mail">
+                                                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                                                    <button type="submit">Send Message</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div id="successMessage" class="successmessage">
+                                            <p><span class="success-ico"></span> Thanks for sending your message! We'll get back to you shortly.</p>
+                                        </div>
+                                        <div id="failureMessage" class="errormessage">
+                                            <p><span class="error-ico"></span> There was a problem sending your message. Please try again.</p>
+                                        </div>
+                                        <div id="incompleteMessage" class="statusMessage">
+                                            <p>Please complete all the fields in the form before sending.</p>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </section>
+                            <section class="no-display">
+                                <div class="item logout" id="4">
+                                    <div class="page-head">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h3>Go back to my profile</h3>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="np-main">
+                                                    <p>Go to next/previous page</p>
+                                                    <div class="np-controls">
+                                                        <a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
+                                                        <a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="logout-info">
+                                        <h4>press  button to go back</h4>
+                                    </div>
+                                    <div class="contact-form">
+
+                                        <form id="contactForm" action="/backtosponsor/{{ f.id }}" method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <button type="submit"><i class="fa fa-arrow-left"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                     </div>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <footer>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <ul class="social">
+                                    <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="https://in.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT -->
+
+    <!-- JavaScript -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static 'guide/js/bootstrap.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.easing.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'guide/js/nivo-lightbox.min.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.appear.js' %}"></script>
+    <script src="{% static 'guide/js/jquery.inview.js' %}"></script>
+    <script src="{% static 'guide/js/main.js' %}"></script>
+    <script src="{% static 'guide/js/contact.js' %}"></script>
+    <script src="{% static 'guide/js/animations.js' %}"></script>
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="{% static 'guide/js/gmaps.js' %}"></script>
+</body>
+</html>
